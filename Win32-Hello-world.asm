@@ -16,3 +16,6 @@ pre_echo:
 	mov dx, msg
 	
 do_echo: int 21h
+
+do_exit: int 20h
+
