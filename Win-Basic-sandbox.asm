@@ -1,6 +1,9 @@
 ;!FASM
 
+; format binary
 format mz
+
+jmp start
 
 start: 
 	mov ax, cs ; set Code Segment
