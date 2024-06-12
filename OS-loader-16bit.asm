@@ -22,7 +22,7 @@ pre_puts: ; prepare before puts()
 
 puts_loop: 
 	lodsb ; Like C + Python: `for c in *si: yield c` (into al)
-	test al, al ; is al Truthy, i.e. like in Python/Java `if(al): {}`
+	test al, al ; is al Truthy, i.e. like in Python/Java `if(al): {}`; TEST is shorter than CMP.
 	jz interactive_fgets ; if not Truthy, exit loop to the next thing
 	int 10h ; interrupt vector 10h, AH=0Eh -> Teletype output
 	jmp puts_loop
