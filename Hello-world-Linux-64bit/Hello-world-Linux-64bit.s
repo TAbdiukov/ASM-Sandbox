@@ -15,7 +15,6 @@
 #			   //    CONST stdout             len(s) is 11, + len(\n') => 12
 #
 #				-> #DEFINE HelloPtr = %"Hello World"
-#				   #DEFINE
 #
 #	...
 # 	return 0;
