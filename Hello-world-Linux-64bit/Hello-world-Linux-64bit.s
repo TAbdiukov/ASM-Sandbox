@@ -23,7 +23,7 @@
 
 # Set segment
 .text # KISS - one segment for everything
-_start # _start - reserved name for OEP in gcc
+_start: # _start - reserved name for OEP in gcc
 
 .global _start # _start is a global label - needed for OEP
 
@@ -40,11 +40,11 @@ call exit
 
 # Data
 msg:
-	.ascii "Hello World\n"
+	.ascii "Hello World!\n"
 len = . - msg # Calculated at compile time message length (0x0C)
 
 # syscall exit
-exit: mov $60, %rdx # syscall 0x60 => exit()
+exit: mov $60, %rax # syscall 0x60 => exit()
 mov $0, %rdi # return code 0
 syscall
 
