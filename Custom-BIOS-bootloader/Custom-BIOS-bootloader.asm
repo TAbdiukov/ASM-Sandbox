@@ -1,4 +1,4 @@
-;!YASM
+;!FASM
 ; Compat: pre-MMX onwards (e.g. 8086)
 
 section .text ; KISS
@@ -6,12 +6,17 @@ use16
 bits 16
 org 0x7C00 ; EP is at 0x7C00
 
+jmp start
+
+amsg db 'My custom BIOS bootloader...!', 13, 10, 0 ; 'TEXT\r\n\'
+
 start: 
 	mov ax, cs ; set Code Segment
 	mov ds, ax ; the same as Data Segment (break DEP)
 
 pre_puts: ; prepare before puts()
-	mov si,amsg ; message to be shown
+	mov si,	amsg ; message to be shown
+	sub si, 0x7C00
 	cld ; ia-32 clear Direction flag (Delphi guidelines for assembler code)
 	mov ah, 0x0e ; AH=0Eh -> Teletype output
 	xor bh, bh ; mov bh, 0; Page number = 0 
@@ -39,9 +44,6 @@ interactive_fgets_backspace_after:
 interactive_fgets_backspace: 
 mov al, 8 ; ASCII character of "Backspace" - remove character (supported by x86 BIOS)
 jmp interactive_fgets_backspace_after
-
-section .data
-  amsg db 'OS Startup message...!', 13, 10, 0 ; 'TEXT\r\n\'
 
 ; Usage
 ; 1. Compile in YASM into a .bin/.ldr file (add extension if needed)
