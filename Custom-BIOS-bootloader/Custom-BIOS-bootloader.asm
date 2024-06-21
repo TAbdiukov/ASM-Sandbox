@@ -16,7 +16,7 @@ start:
 
 pre_puts: ; prepare before puts()
 	mov si,	amsg ; message to be shown
-	sub si, 0x7C00
+	sub si, 0x7C00 ; Do not use EP offset.
 	cld ; ia-32 clear Direction flag (Delphi guidelines for assembler code)
 	mov ah, 0x0e ; AH=0Eh -> Teletype output
 	xor bh, bh ; mov bh, 0; Page number = 0 
