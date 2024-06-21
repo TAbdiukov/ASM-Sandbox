@@ -12,7 +12,7 @@ start:
 
 pre_puts: ; prepare before puts()
 	mov si,amsg ; message to be shown
-	;cld ; ia-32 clear Direction flag (Delphi guidelines for assembler code)
+	cld ; ia-32 clear Direction flag (Delphi guidelines for assembler code)
 	mov ah, 0x0e ; AH=0Eh -> Teletype output
 	xor bh, bh ; mov bh, 0; Page number = 0 
 
@@ -41,7 +41,7 @@ mov al, 8 ; ASCII character of "Backspace" - remove character (supported by x86 
 jmp interactive_fgets_backspace_after
 
 section .data
-  amsg db 'My OS loader...!', 13, 10, 0 ; 'TEXT\r\n\'
+  amsg db 'OS Startup message...!', 13, 10, 0 ; 'TEXT\r\n\'
 
 ; Usage
 ; 1. Compile in YASM into a .bin/.ldr file (add extension if needed)
