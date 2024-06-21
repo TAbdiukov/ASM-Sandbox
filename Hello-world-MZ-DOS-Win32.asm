@@ -3,19 +3,19 @@
 ; format binary
 format mz
 
-msg: db "Hello world$"
-
 jmp start
 
-start: 
-	mov ax, cs ; set Code Segment
-	mov ds, ax ; the same as Data Segment (break DEP)
+msg: db "Hello world!$"
 
-pre_echo: 
-	mov ax, 4c00h
-	mov dx, msg
-	
-do_echo: int 21h
+start:
+        mov ax, cs ; set Code Segment
+        mov ds, ax ; the same as Data Segment (break DEP)
 
-do_exit: int 20h
+echo:
+        mov ah, 09h
+        mov dx, msg
+        int 21h
 
+exit:
+        mov ax, 4c00h
+        int 21h
