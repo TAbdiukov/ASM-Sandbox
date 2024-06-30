@@ -20,7 +20,7 @@
 # for i in range(rbx):
 # 	rcx += rax
 # return rax
-# ``` 
+# ```
 
 # Solution
 
@@ -29,7 +29,7 @@ push %rcx # Backup register rcx
 xor %rcx, %rcx # mov $0, rcx
 
 loop: test %rbx, %rbx # while(rbx)
-jz ret 
+jz ret
 
 math: add %rax, %rcx # add rax once
 dec %rbx # decrement from %rbx

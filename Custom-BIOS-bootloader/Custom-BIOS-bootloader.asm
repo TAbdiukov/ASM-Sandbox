@@ -10,7 +10,7 @@ jmp start
 
 amsg db 'My custom BIOS bootloader...!', 13, 10, 0 ; 'TEXT\r\n\'
 
-start: 
+start:
 	mov ax, cs ; set Code Segment
 	mov ds, ax ; the same as Data Segment (break DEP)
 
@@ -19,9 +19,9 @@ pre_puts: ; prepare before puts()
 	sub si, 0x7C00 ; Do not use EP offset.
 	cld ; ia-32 clear Direction flag (Delphi guidelines for assembler code)
 	mov ah, 0x0e ; AH=0Eh -> Teletype output
-	xor bh, bh ; mov bh, 0; Page number = 0 
+	xor bh, bh ; mov bh, 0; Page number = 0
 
-puts_loop: 
+puts_loop:
 	lodsb ; Like C + Python: `for c in *si: yield c` (into al)
 	test al,al ; is al Truthy, i.e. like in Python/Java `if(al): {}`; TEST is shorter than CMP.
 	jz puts_loop_out ; if not Truthy, exit loop to the next thing
@@ -41,7 +41,7 @@ interactive_fgets_backspace_after:
 	int 10h ; interrupt vector 10h, AH=0Eh -> Teletype output
 	jmp interactive_fgets ; jump back
 
-interactive_fgets_backspace: 
+interactive_fgets_backspace:
 mov al, 8 ; ASCII character of "Backspace" - remove character (supported by x86 BIOS)
 jmp interactive_fgets_backspace_after
 
