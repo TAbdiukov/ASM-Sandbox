@@ -1,5 +1,5 @@
 # ASM-Sandbox
-Assembly sandbox
+Assembly sandbox.
 
 Repository path | Release | Description 
 ---- | ---- | ---- |
