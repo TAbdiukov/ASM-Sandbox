@@ -1,4 +1,10 @@
 # ASM-Sandbox
+
+[![GitHub](https://img.shields.io/badge/GitHub-TAbdiukov/ASM-Sandbox-black?logo=github)](https://github.com/TAbdiukov/ASM-Sandbox)
+![License](https://img.shields.io/github/license/TAbdiukov/ASM-Sandbox)
+
+[![buymeacoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tabdiukov)
+
 Assembly sandbox.
 
 Repository path | Release | Description 
